@@ -1,0 +1,132 @@
+body {
+    font-family: "Nunito", sans-serif;
+    color: #8c7d91;
+    font-weight: 300;
+    line-height: 1.6;
+    background: #f3f3f3;
+    /* text-align: center; */
+}
+
+html {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+
+.adminPanel__header,
+#adminContainer {
+    margin: auto;
+    width: 650px;
+    /* border: 1px solid blue; */
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.adminPanel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+.control {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.primary {
+    color: #ff005e !important;
+}
+
+.heading-1 {
+    font-size: 6rem;
+    line-height: 1;
+    margin: 1rem;
+    margin-bottom: 3rem;
+}
+
+.heading-4 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+}
+
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4 {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+}
+
+
+.adminPanel__header button {
+    font-size: 1.4rem;
+    padding: 1rem 3rem;
+    border: 2px solid #ff005e;
+}
+
+.btn {
+    background-color: #ff005e;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1.5rem;
+    padding: 1.8rem 4rem;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none;
+    margin: 2rem;
+}
+
+.adminPanel__header button.active {
+    background: transparent;
+    color: #ff005e;
+    font-weight: 500;
+}
+
+
+
+.btn:active {
+    transform: translate(0, 1px);
+}
+
+
+button:focus,
+button:active {
+    outline: none !important;
+    outline: 0 !important;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+input::placeholder {
+    color: #b6249e;
+    opacity: .5;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    border: none;
+}
+
+.message {
+    font-size:2rem;
+    transition: all .2s;
+    margin-left: 2rem;
+    opacity: 0;
+
+}
+
+.show {
+    opacity: 1;
+}

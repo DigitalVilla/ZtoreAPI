@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="css/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Ztore. API</title>
+</head>
+<div class="adminPanel animated">
+    <div class="adminPanel__header">
+        <div>
+            <h3 id="username-admin" class="heading-4">Welcome to the official:</h3>
+            <h1 class="heading-1 primary ">ZTORE. API</h1>
+            <h3 id="message" class="message heading-4 primary"> Console</h3>
+        </div>
+        <div class="control">
+            <button class="btn tableBtn" onclick="load()">LOAD</button>
+            <button class="btn tableBtn active" onclick="reset()">RESET</button>
+        </div>
+
+  
+    </div>
+</div>
+
+
+<script>
+class DB{constructor(){this.url='http://localhost:8084/ZtoresAPI/api/';this.Ztore={"Items":[{"description":"Headphones","id":11,"price":310,"qty":40},{"description":"Watch","id":12,"price":240,"qty":30},{"description":"Speakers","id":13,"price":99.99,"qty":60},{"description":"Laptop","id":14,"price":1850,"qty":70},{"description":"Television","id":15,"price":2550,"qty":20},{"description":"VideoGame","id":16,"price":220,"qty":80}]}}
+API(url,method,JsonMsg=null){const params={method,credentials: 'include',  headers:{'Content-type':"application/json; charset=utf-8"}};if(method!='GET')
+params.body=JSON.stringify(JsonMsg);return new Promise((resolve,reject)=>{fetch(url,params).then((response)=>this.handleError(response)).then(json=>resolve(json)).catch(err=>reject(err))})}
+handleError(response){if(!response.ok){throw Error(`Fetecher encountered a ${response.status} error.`)}
+return response.json()}}
+
+    const db = new DB();
+
+   function load() {
+            db.API(db.url+"ztore/batch/all", "DELETE")
+                .then(() => db.API(db.url + "ztore/batch", "POST", db.Ztore))
+                .then(()=> print("Ztore. has been loaded", 3e3));
+               
+        }
+
+     function reset() {
+            db.API(db.url + "ztore/batch/all", "DELETE")
+                .then(() => db.API(db.url + "cart/batch/all", "DELETE"))
+               .then(()=> print("Ztore. has been removed", 3e3));
+        }
+
+        function print(text,delay) {
+           let  msg  = document.getElementById("message");
+          msg.innerText = text;
+          msg.classList.add("show");
+          setTimeout (()=>{
+          msg.classList.remove("show");
+          },delay)
+            
+        }
+</script>
+</body>
+
+</html>
